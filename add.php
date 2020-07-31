@@ -16,12 +16,12 @@ if (isset($_POST["submit"])) {
 	$time = $_POST["time"];
     $time_last = $_POST["time_last"];
     $driver = $_POST["driver"];
-	//$place = $_POST["place"];
+	$place = $_POST["place"];
 	$date = date('Y-m-d', strtotime(str_replace('-', '/', $date)));
 	$date_last = date('Y-m-d', strtotime(str_replace('-', '/', $date_last)));
 
 
-$sql = "INSERT INTO booking_bus (title, date, date_last, time, time_last, driver) VALUES (:a, :b, :c, :d, :e, :f)";
+$sql = "INSERT INTO booking_bus (title, date, date_last, time, time_last, driver, place) VALUES (:a, :b, :c, :d, :e, :f, :g)";
 $stmt = $dbo->prepare($sql);
 $stmt->bindParam(':a', $title, PDO::PARAM_STR); 
 $stmt->bindParam(':b', $date, PDO::PARAM_STR);
@@ -29,7 +29,7 @@ $stmt->bindParam(':c', $date_last, PDO::PARAM_STR);
 $stmt->bindParam(':d', $time, PDO::PARAM_STR);
 $stmt->bindParam(':e', $time_last, PDO::PARAM_STR);
 $stmt->bindParam(':f', $driver, PDO::PARAM_STR);
-//$stmt->bindParam(':g', $place, PDO::PARAM_STR);
+$stmt->bindParam(':g', $place, PDO::PARAM_STR);
 
 if($stmt->execute()) {
 	$result = true;
@@ -165,15 +165,16 @@ img {
               <p></p>
               <form class="form-horizontal" role="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                 <div class="form-group">
-                  <label class="control-label col-sm-2" for="title">Title:</label>
+                  <label class="control-label col-sm-2" for="title">Registration No:</label>
                   <div class="col-sm-4">
-                    <input type="title" class="form-control" id="title" name="title" placeholder="Enter title">
+                    <input type="title" class="form-control" id="title" name="title" placeholder="Enter plate number">
+					 <span class="text-muted">eg: JKL 2201</span><br />
                   </div>
                 </div>
 				<div class="form-group">
                   <label class="control-label col-sm-2" for="driver">Driver:</label>
                   <div class="col-sm-4">
-                    <input type='text' class="form-control" id='driver' name="driver" placeholder="Enter driver" />
+                    <input type='text' class="form-control" id='driver' name="driver" placeholder="Enter driver name" />
                   </div>
                 </div>
                 <div class="form-group">
@@ -196,13 +197,14 @@ img {
                     <input type='hidden' class="form-control" id='datetimepicker6' name="time_last" placeholder="Enter time" />
                   </div>
                 </div>
-                <!--
+                
                 <div class="form-group">
-                  <label class="control-label col-sm-2" for="time">Place:</label>
-                  <div class="col-sm-6">
-                    <input type='text' class="form-control" id='place' name="place" placeholder="Enter place" />
+                  <label class="control-label col-sm-2" for="time">IC Number:</label>
+                  <div class="col-sm-4">
+                    <input type='text' class="form-control" id='place' name="place" placeholder="Enter I/C number" />
+					 <span class="text-muted">without hyphen (-)</span><br />
                   </div>
-                </div>-->
+                </div>
                 <button type="submit" class="btn btn-success" name="submit"><b><span class="glyphicon glyphicon-hdd"></span>&nbsp; Submit</b></button>
               </form>
           </div>
