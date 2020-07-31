@@ -163,7 +163,16 @@ img {
                         <div class="form-group">
                           <label class="control-label col-sm-2" for="nric">FACULTY:</label>
                           <div class="col-sm-6">
-                          <input type="text"   class="form-control" required id="faculty" name="faculty" placeholder="Enter FACULTY">
+                          <select class="form-control" name="faculty">
+                            <option value="Faculty of Chemical and Process Engineering Technology">Faculty of Chemical and Process Engineering Technology</option>
+                            <option value="Faculty of Civil Engineering Technology">Faculty of Civil Engineering Technology</option>
+                            <option value="Faculty of Electrical and Electronic Engineering Technology">Faculty of Electrical and Electronic Engineering Technology</option>
+                            <option value="Faculty of Manufacturing and Mechatronic Engineering Technology">Faculty of Manufacturing and Mechatronic Engineering Technology</option>
+                            <option value="Faculty of Mechanical and Automotive Engineering Technology">Faculty of Mechanical and Automotive Engineering Technology</option>
+                            <option value="Faculty of Computing">Faculty of Computing</option>
+                            <option value="Faculty of Industrial Sciences and Technology">Faculty of Industrial Sciences and Technology</option>
+                            <option value="Faculty of Industrial Management">Faculty of Industrial Management</option>
+                          </select>  
                           </div>
                         </div>
               <div class="form-group">
@@ -198,7 +207,7 @@ img {
                         <div class="form-group">
                           <label class="control-label col-sm-2" for="city">City:</label>
                           <div class="col-sm-4">
-                          <input type="text" class="form-control" required id="city" name="city" placeholder="Enter City">
+                          	<input type="text" class="form-control" required id="city" name="city" placeholder="Enter City">
                           </div>
                         </div>
                         <div class="form-group">
