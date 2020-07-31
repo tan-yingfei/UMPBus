@@ -99,7 +99,7 @@ else
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>eBooking Online UMP Bus</title>
+    <title>eReservation Online UMP Bus</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -137,7 +137,7 @@ img {
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <img src="img/rasmi.png" alt="" width="500" height="200" />
-					<div class="brand">UMP BUS BOOKING </div>
+					<div class="brand">UMP BUS RESERVATION </div>
     <div class="address-bar"><strong>Universiti Malaysia Pahang, Lebuhraya Tun Razak, 26300, Gambang, Kuantan, Pahang Darul Makmur</strong></div>
                 </div>
             </div>
