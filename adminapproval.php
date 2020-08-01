@@ -156,12 +156,7 @@ img {
               <div class="form-group">
                   <label class="control-label col-sm-2" for="status">Status:</label>
                   <div class="col-sm-10">
-                    <select class="form-control" name="status" id="status" style="color:#656565" required>
-                    	<option value="0" >Pending</option>
-                    	<option value="3" >Rejected</option>
-                    	<option value="1" >Approve</option>
-                    	<!--<option value="RM25 - Pentas Utama" >RM25 - Pentas Utama</option>-->
-                    </select>
+                    
                       <br>
                   </div>
                   
