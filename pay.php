@@ -266,7 +266,6 @@ img {
                         <strong>Bookings and Approvals</strong>
                     </h2>
                     <hr>
-					 <div class="inner cover" style="height:400px; overflow-y: scroll;">
           <br/>
               <h3><?php if (!empty($s["pay"])) { ?>Payment Uploaded<?php } else { ?>Upload Payment<?php } ?></h3>
 			  <?php if (!$s["pstatus"] == "1") { ?><h4>Price : RM <?php echo (empty($s['price'])? '0.00' : $s['price']); ?> </h4> <?php } ?>
