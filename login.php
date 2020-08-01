@@ -138,7 +138,7 @@ div.row1 {
                       <label for="pwd">Password:</label>
                       <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Enter password">
                     </div>
-                    <button type="submit" name="submit" class="btn btn-success"><b> Submit <span class="glyphicon glyphicon-log-in"></b></button>
+                    <button type="submit" name="submit" class="btn btn-success"><b> Login  <span class="glyphicon glyphicon-log-in"></b></button>
                 </form>
             </div>
           </div>
