@@ -125,7 +125,7 @@ img {
                     <h2 class="brand-before">
                         <big>Welcome to</big>
                     </h2>
-                    <h1 class="brand-name">UMP Bus Booking System</h1>
+                    <h1 class="brand-name">UMP Bus Reservation System</h1>
                     <hr class="tagline-divider">
                 </div>
             </div>

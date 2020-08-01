@@ -122,31 +122,31 @@ img {
                     <hr>
 					
 					
-        <div class="inner cover" align="center" >
+        <div class="inner cover">
         <br />
       	<p></p>                                                                                      
-          <div class="table-responsive" style="height:300px; overflow-y: scroll; width: 800px;" >          
-                <table class="table table-bordered" id="view" >
+          <div class="table-responsive" style="height:300px; overflow-y: scroll; width: 800px;">          
+                <table class="table table-bordered" id="view">
 
                       <tr>
                         <td align="center" style="font-weight: bold;">Bus ID</td>
-                        <td align="center" style="font-weight: bold;">Title</td>
+                        <td align="center" style="font-weight: bold;">Plate No</td>
                      
                         
                         <td align="center" style="font-weight: bold;">Driver</td>
-                        <!--<th>Place</th>-->
+                        <td align="center" style="font-weight: bold;">I/C No</td>
                         <td align="center" style="font-weight: bold;">Options</td>
                       </tr>
                     
                     <?php while($sa = $stmta->fetch(PDO::FETCH_ASSOC)) { ?>
                       <tr id="<?php echo $sa["num_booking"]; ?>">
-                          <td align="center"><a href="#" class="num_booking" data-type="text" data-pk="<?php echo $sa["num_booking"]; ?>" data-original-title="Enter title" data-name="num_booking"><?php echo $sa["num_booking"]; ?></a></td>
-                        <td align="center"><a href="#" class="title" data-type="text" data-pk="<?php echo $sa["num_booking"]; ?>" data-original-title="Enter title" data-name="title"><?php echo $sa["title"]; ?></a></td>
+                          <td><a href="#" class="num_booking" data-type="text" data-pk="<?php echo $sa["num_booking"]; ?>" data-original-title="Enter title" data-name="num_booking"><?php echo $sa["num_booking"]; ?></a></td>
+                        <td><a href="#" class="title" data-type="text" data-pk="<?php echo $sa["num_booking"]; ?>" data-original-title="Enter title" data-name="title"><?php echo $sa["title"]; ?></a></td>
                         
                         
-                        <td align="center"><a href="#" class="driver" data-type="text" data-pk="<?php echo $sa["num_booking"]; ?>" data-original-title="Enter driver" data-name="driver"><?php echo $sa["driver"]; ?></a></td>
-                        <!--<td><a href="#" class="place" data-type="text" data-pk="<?php echo $sa["num_booking"]; ?>" data-original-title="Enter place" data-name="place"><?php echo $sa["place"]; ?></a></td>-->
-                        <td align="center"><a id="<?php echo $sa["num_booking"]; ?>" class="btn btn-danger delete"><span class="glyphicon glyphicon-trash"></span>&nbsp; Delete</a></td>
+                        <td><a href="#" class="driver" data-type="text" data-pk="<?php echo $sa["num_booking"]; ?>" data-original-title="Enter driver" data-name="driver"><?php echo $sa["driver"]; ?></a></td>
+                        <td><a href="#" class="place" data-type="text" data-pk="<?php echo $sa["num_booking"]; ?>" data-original-title="Enter place" data-name="place"><?php echo $sa["place"]; ?></a></td>
+                        <td><a id="<?php echo $sa["num_booking"]; ?>" class="btn btn-danger delete"><span class="glyphicon glyphicon-trash"></span>&nbsp; Delete</a></td>
                       </tr>
                      <?php } ?> 
                 </table>
@@ -161,7 +161,7 @@ img {
     <!-- /.container -->
 
     <footer>
-        <div class="container" >
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                    <p>Copyright &copy; UNIVERSITI MALAYSIA PAHANG 2002 - 2016</p>

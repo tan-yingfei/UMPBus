@@ -4,13 +4,42 @@ session_start();
 
 
 if (!isset($_SESSION['user'])) {
-	header('Location: http://localhost/login.php');
+	header('Location: login.php');
 }
 
-$stmta = $dbo->prepare('SELECT * FROM booking_bus ORDER BY num_booking DESC');
-$stmta->execute();
+if (isset($_POST["submit"])) {
+	
+	$submit = true;
+	$title = $_POST["title"];
+	$date = $_POST["date"];
+    $date_last = $_POST["date_last"];
+	$time = $_POST["time"];
+    $time_last = $_POST["time_last"];
+    $driver = $_POST["driver"];
+	$place = $_POST["place"];
+	$date = date('Y-m-d', strtotime(str_replace('-', '/', $date)));
+	$date_last = date('Y-m-d', strtotime(str_replace('-', '/', $date_last)));
+
+
+$sql = "INSERT INTO booking_bus (title, date, date_last, time, time_last, driver, place) VALUES (:a, :b, :c, :d, :e, :f, :g)";
+$stmt = $dbo->prepare($sql);
+$stmt->bindParam(':a', $title, PDO::PARAM_STR); 
+$stmt->bindParam(':b', $date, PDO::PARAM_STR);
+$stmt->bindParam(':c', $date_last, PDO::PARAM_STR);
+$stmt->bindParam(':d', $time, PDO::PARAM_STR);
+$stmt->bindParam(':e', $time_last, PDO::PARAM_STR);
+$stmt->bindParam(':f', $driver, PDO::PARAM_STR);
+$stmt->bindParam(':g', $place, PDO::PARAM_STR);
+
+if($stmt->execute()) {
+	$result = true;
+}
+
+}
+
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,12 +57,12 @@ $stmta->execute();
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/bootstrap.min1.css" rel="stylesheet">
-    <link href="css/bootstrap-editable.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/business-casual.css" rel="stylesheet">
 	<link href="css/cover.css" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap-datetimepicker.css" />
+	<script src="js/ie-emulation-modes-warning.js"></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
@@ -116,44 +145,70 @@ img {
                 <div class="col-lg-12">
                     <hr>
                     <h2 class="intro-text text-center">
-
-                        <strong>View Current Bus & Driver</strong>
+                        <strong>Add New Bus</strong>
                     </h2>
                     <hr>
-					
-					
-        <div class="inner cover" align="center" >
-        <br />
-      	<p></p>                                                                                      
-          <div class="table-responsive" style="height:300px; overflow-y: scroll; width: 800px;" >          
-                <table class="table table-bordered" id="view" >
+                </div>
+				
+				
 
-                      <tr>
-                        <td align="center" style="font-weight: bold;">Bus ID</td>
-                        <td align="center" style="font-weight: bold;">Title</td>
-                     
-                        
-                        <td align="center" style="font-weight: bold;">Driver</td>
-                        <!--<th>Place</th>-->
-                        <td align="center" style="font-weight: bold;">Options</td>
-                      </tr>
-                    
-                    <?php while($sa = $stmta->fetch(PDO::FETCH_ASSOC)) { ?>
-                      <tr id="<?php echo $sa["num_booking"]; ?>">
-                          <td align="center"><a href="#" class="num_booking" data-type="text" data-pk="<?php echo $sa["num_booking"]; ?>" data-original-title="Enter title" data-name="num_booking"><?php echo $sa["num_booking"]; ?></a></td>
-                        <td align="center"><a href="#" class="title" data-type="text" data-pk="<?php echo $sa["num_booking"]; ?>" data-original-title="Enter title" data-name="title"><?php echo $sa["title"]; ?></a></td>
-                        
-                        
-                        <td align="center"><a href="#" class="driver" data-type="text" data-pk="<?php echo $sa["num_booking"]; ?>" data-original-title="Enter driver" data-name="driver"><?php echo $sa["driver"]; ?></a></td>
-                        <!--<td><a href="#" class="place" data-type="text" data-pk="<?php echo $sa["num_booking"]; ?>" data-original-title="Enter place" data-name="place"><?php echo $sa["place"]; ?></a></td>-->
-                        <td align="center"><a id="<?php echo $sa["num_booking"]; ?>" class="btn btn-danger delete"><span class="glyphicon glyphicon-trash"></span>&nbsp; Delete</a></td>
-                      </tr>
-                     <?php } ?> 
-                </table>
-              </div>      
-            </div>
-					
-                </div>                
+          <div class="inner cover">
+          <?php if (isset($submit)) { ?>
+          <?php if (isset($result)) { ?>
+          <div class="alert alert-success" role="alert">Well done! Successfully processed.</div>
+          <?php } else { ?>
+          <div class="alert alert-warning" role="alert">Oh snap! Please try again.</div>
+          <?php } ?>
+          <?php } ?>
+          <br />
+              <!--<h2>Add Match</h2>-->
+              <p></p>
+              <form class="form-horizontal" role="form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="title">Registration No:</label>
+                  <div class="col-sm-4">
+                    <input type="title" class="form-control" id="title" name="title" placeholder="Enter plate number">
+					 <span class="text-muted">eg: JKL 2201</span><br />
+                  </div>
+                </div>
+				<div class="form-group">
+                  <label class="control-label col-sm-2" for="driver">Driver:</label>
+                  <div class="col-sm-4">
+                    <input type='text' class="form-control" id='driver' name="driver" placeholder="Enter driver name" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="date"></label>
+                  <div class="col-sm-4">
+                    <input type='hidden' class="form-control" id='datetimepicker3' name="date" placeholder="Enter date" />
+                  </div>
+                  <label class="control-label col-sm-1" for="date"></label>
+                  <div class="col-sm-4">
+                    <input type='hidden' class="form-control" id='datetimepicker4' name="date_last" placeholder="Enter date" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="time"></label>
+                  <div class="col-sm-4">
+                    <input type='hidden' class="form-control" id='datetimepicker5' name="time" placeholder="Enter time" />
+                  </div>
+                  <label class="control-label col-sm-1" for="time"></label>
+                  <div class="col-sm-4">
+                    <input type='hidden' class="form-control" id='datetimepicker6' name="time_last" placeholder="Enter time" />
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="control-label col-sm-2" for="time">IC Number:</label>
+                  <div class="col-sm-4">
+                    <input type='text' class="form-control" id='place' name="place" placeholder="Enter I/C number" />
+					 <span class="text-muted">without hyphen (-)</span><br />
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-success" name="submit"><b><span class="glyphicon glyphicon-hdd"></span>&nbsp; Submit</b></button>
+              </form>
+          </div>
+                
 				<div class="clearfix"></div>
             </div>
         </div>
@@ -161,7 +216,7 @@ img {
     <!-- /.container -->
 
     <footer>
-        <div class="container" >
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                    <p>Copyright &copy; UNIVERSITI MALAYSIA PAHANG 2002 - 2016</p>
@@ -175,13 +230,12 @@ img {
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-	
+
 	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/bootstrap-editable.min.js"></script>
     <script src="js/vegas.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
@@ -203,95 +257,7 @@ img {
 				});
             });
     </script>
-    <script type="text/javascript" >
-	$(document).ready(function() {
-            
-                $('.title').editable({
-						url: 'modviewmatch.php',
-						display: function(value) {
-							$(this).html(value)
-						},
-		});
-                
-		$('.date').editable({
-						url: 'modviewmatch.php',
-						display: function(value) {
-							$(this).html(value)
-						},
-		});
-                
-                $('.date_last').editable({
-						url: 'modviewmatch.php',
-						display: function(value) {
-							$(this).html(value)
-						},
-		});
-                
-		$('.time').editable({
-						url: 'modviewmatch.php',
-						display: function(value) {
-							$(this).html(value)
-						},
-		});
-                
-                $('.time_last').editable({
-						url: 'modviewmatch.php',
-						display: function(value) {
-							$(this).html(value)
-						},
-		});
-                
-                $('.driver').editable({
-						url: 'modviewmatch.php',
-						display: function(value) {
-							$(this).html(value)
-						},
-		});
-                
-		$('.place').editable({
-						url: 'modviewmatch.php',
-						display: function(value) {
-							$(this).html(value)
-						},
-		});
-    });
-	</script>
-	<script type="text/javascript" >
-		
-		$(document).ready(function()
-		{
-			$('table#view td a.delete').click(function()
-			{
-				if (confirm("Are you sure you want to delete this row?"))
-				{
-					var id = $(this).parent().parent().attr('id');
-					var data = 'id=' + id ;
-					var parent = $(this).parent().parent();
-		 
-					$.ajax(
-					{
-						   type: "POST",
-						   url: "deleteviewmatch.php",
-						   dataType: "json",
-						   data: data,
-						   cache: false,
-		 
-						   success: function()
-						   {
-							
-							setTimeout(function(){location.reload(true);},50)
-							
-						   }
-					 });
-				}
-			});
-		 
-		
-		});
-		
-		
-		</script>
-
+	
 </body>
 
 </html>
