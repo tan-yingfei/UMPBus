@@ -114,8 +114,6 @@ img {
         </div>
         <!-- /.container -->
     </nav>
-
-    <div class="container text-center">
         <div class="row">
             <div class="box">
                 <div class="col-lg-12">
@@ -141,7 +139,7 @@ img {
                         <th>Faculty</th>
                         <th>Date</th>
                         <th>E-mail</th>
-                        <th>Addr.</th>
+                        <th>Address</th>
                         <th>Phone</th>
                         <th>City</th>
                         <th>State</th>
