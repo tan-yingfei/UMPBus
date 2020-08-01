@@ -59,52 +59,7 @@ img {
 </style>
 
 <body>
-<footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <img src="img/rasmi.png" alt="" width="500" height="200" />
-					<div class="brand">UMP BUS RESERVATION </div>
-    <div class="address-bar"><strong>Universiti Malaysia Pahang, Lebuhraya Tun Razak, 26300, Gambang, Kuantan, Pahang Darul Makmur</strong></div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Navigation -->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.php">Business Casual</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="index.php">Home</a>
-                    </li>
-                    <li>
-                        <a href="choose.php">Bookings</a>
-                    </li>
-                    <li>
-                        <a href="contact.php">Contact Us</a>
-                    </li>
-                    <li>
-                        <a href="login.php">Login</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+
 
     <div class="container text-center">
         <div class="row">
@@ -123,13 +78,7 @@ img {
       <div class="site-wrapper-inner">
 
         <div class="cover-container">
-			
-          
-
-          <div class="inner cover" style="height:600px; overflow-y: scroll;">
-          <br/>
-              
-              
+			    
              <img src="img/rasmi.png" alt="" width="100" height="100" /><br/><br/>
               <?php if ($s["pstatus"] == "1") { ?>
 			  <h3><?php echo $sa["title"]; ?></h3>
@@ -195,35 +144,12 @@ img {
               
            </div>   
           
-          
-          
-
-
-         
-
-        </div>
-		</div>
-      </div>
-
-    </div>
-
-   
-                </div>                
+                         
 				<div class="clearfix"></div>
             </div>
         </div>
     </div>
     <!-- /.container -->
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                   <p>Copyright &copy; UNIVERSITI MALAYSIA PAHANG 2002 - 2016</p>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
