@@ -45,6 +45,11 @@ img {
     margin: auto;
     width: 40%;
 }
+
+div.row1 {
+    width:500px;
+    margin: auto;
+}
 </style>
 
 <body>
@@ -123,8 +128,9 @@ img {
 					 <div class="inner cover">
            
             <?php if (isset($_GET["error"])) { ?><div class="panel panel-danger" style="color: red;">Login Error</div><?php } ?>
-            	<form role="form" method="post" action="loginpro.php" name="loginform">
-                    <div class="form-group" class="text-align center">
+            <div class ="row1"> 
+                <form role="form" method="post" action="loginpro.php" name="loginform">
+                   <div class="form-group" class="text-align center">
                       <label for="email">Username:</label>
                       <input type="name" class="form-control" id="email" name="email" placeholder="Enter username" >
                     </div>
@@ -134,6 +140,7 @@ img {
                     </div>
                     <button type="submit" name="submit" class="btn btn-success"><b> Submit <span class="glyphicon glyphicon-log-in"></b></button>
                 </form>
+            </div>
           </div>
                 </div>
             </div>
